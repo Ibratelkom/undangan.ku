@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Undangan Pernikahan</title> 
+  <link rel="stylesheet" href="formulir1.css">
+
+</head>
+<body>
+  <div class="container">
+    <h1>Form Data Undangan Pernikahan</h1>
+    <form id="weddingForm">
+      <label>Nama Pria</label>
+      <input type="text" id="namaPria" placeholder="Contoh: Budi" required>
+
+      <label>Orang Tua Mempelai Pria</label>
+      <input type="text" id="ortuPria" placeholder="Contoh: Bapak Ahmad & Ibu Fatimah" required>
+
+      <label>Nama Wanita</label>
+      <input type="text" id="namaWanita" placeholder="Contoh: Rina" required>
+
+      <label>Orang Tua Mempelai Wanita</label>
+      <input type="text" id="ortuWanita" placeholder="Contoh: Bapak Sulaiman & Ibu Nuraini" required>
+
+      <label>Cerita / Quotes Cinta</label>
+      <textarea id="loveText" rows="5" placeholder="Tulis cerita atau quotes cinta kalian..." required></textarea>
+
+      
+    <label for="formTanggal">Pilih Tanggal Pernikahan:</label>
+    <input type="date" id="formTanggal" />
+
+    
+    <input type="hidden" id="tanggalPernikahan" />
+
+    <label>Link Lokasi (Google Maps)</label>
+    <input type="url" id="lokasiMaps" placeholder="Contoh: https://maps.app.goo.gl/xxxxx" required>
+
+
+      <button type="submit">Simpan dan Lihat Undangan</button>
+    </form>
+  </div>
+
+  <script>
+    function formatTanggalIndonesia(tanggal) {
+      const bulan = [
+        "Januari", "Februari", "Maret", "April", "Mei", "Juni",
+        "Juli", "Agustus", "September", "Oktober", "November", "Desember"
+      ];
+      const hari = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
+      const dateObj = new Date(tanggal);
+      const namaHari = hari[dateObj.getDay()];
+      const tanggalAngka = dateObj.getDate();
+      const namaBulan = bulan[dateObj.getMonth()];
+      const tahun = dateObj.getFullYear();
+      return `${namaHari}, ${tanggalAngka} ${namaBulan} ${tahun}`;
+    }
+  
+   
+    document.getElementById("formTanggal").addEventListener("change", function () {
+      const tanggal = this.value;
+      document.getElementById("tanggalPernikahan").value = tanggal;
+      const weddingDateElem = document.getElementById("weddingDate");
+      if (weddingDateElem) {
+        weddingDateElem.textContent = formatTanggalIndonesia(tanggal);
+      }
+    });
+  
+    // Saat submit form
+    document.getElementById('weddingForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+  
+      const data = {
+      namaPria: document.getElementById('namaPria').value.trim(),
+      ortuPria: document.getElementById('ortuPria').value.trim(),
+      namaWanita: document.getElementById('namaWanita').value.trim(),
+      ortuWanita: document.getElementById('ortuWanita').value.trim(),
+      cerita: document.getElementById('loveText').value.trim(),
+      tanggal: document.getElementById('tanggalPernikahan').value,
+      lokasi: document.getElementById('lokasiMaps').value.trim(),
+    };
+
+      localStorage.setItem('weddingData', JSON.stringify(data));
+      window.location.href = 'undangan3.html';
+    });
+  </script>
+  
+</body>
+</html>

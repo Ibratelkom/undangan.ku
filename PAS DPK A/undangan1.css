@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap');
+
+::-webkit-scrollbar{
+  max-width: 0;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Playfair Display', serif;
+  }
+  
+  body {
+    background: url('bgrn1.jpg') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    padding: 40px 20px;
+    color: #4b2e2e;
+  }
+  
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 50px 40px;
+    border-radius: 18px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Heading utama */
+  h1, h2 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 40px;
+    text-align: center;
+    color: #6a3e2a;
+    margin-bottom: 30px;
+  }
+  
+  /* Dekorasi nama pasangan */
+  #dataDisplay p:first-child {
+    font-size: 2rem;
+    
+    color: #8b5e3c;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+    position: relative;
+  }
+  
+  /*Pria*/
+  #dataDisplay p:first-child::before,
+  #dataDisplay p:first-child::after {
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+  }
+  
+  .decor-line {
+    width: 100px;
+    height: 2px;
+    background-color: #c69c6d;
+    margin: 0 auto 15px auto;
+  }
+  
+  /* Nama orang tua pria */
+  #dataDisplay p:nth-child(2){
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    color: #5c4334;
+  }
+
+  /*Wanita*/
+  #dataDisplay p:nth-child(3) {
+    text-align: center;
+    font-size: 1.6rem;
+    color: #5c4334;
+    margin-bottom: 10px;
+  }
+
+ /* Nama Orang Tua Wanita*/
+  #dataDisplay p:nth-child(4){
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+  
+  /* Cerita cinta */
+  .story-box {
+    background-color: rgba(255, 245, 230, 0.9);
+    padding: 20px;
+    border-left: 5px solid #c69c6d;
+    border-radius: 10px;
+    font-style: italic;
+    margin-top: 30px;
+    white-space: pre-line;
+    color: #3b2b20;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+  
+
+  .wedding-date {
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-align: center;
+    color: #8b5e3c;
+    margin-bottom: 30px;
+    margin-left: 290px;
+    background-color: rgba(255, 255, 255, 0.4);
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 2px dashed #d4af37;
+  }
+  
