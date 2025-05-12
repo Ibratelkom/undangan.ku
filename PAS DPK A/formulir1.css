@@ -1,0 +1,74 @@
+/* wedding-form.css */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #ffe6e6, #fff5f5);
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    text-align: center;
+    color: #d14d72;
+    margin-bottom: 30px;
+  }
+  
+  form label {
+    display: block;
+    margin-top: 20px;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  form input[type="text"],
+  form input[type="url"],
+  form input[type="date"],
+  form textarea {
+    width: 100%;
+    padding: 10px 12px;
+    margin-top: 8px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #fdfdfd;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+  }
+  
+  form input:focus,
+  form textarea:focus {
+    border-color: #d14d72;
+    outline: none;
+  }
+  
+  form textarea {
+    resize: vertical;
+  }
+  
+  button[type="submit"] {
+    margin-top: 30px;
+    width: 100%;
+    background-color: #d14d72;
+    color: #fff;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #b73c60;
+  }
+  

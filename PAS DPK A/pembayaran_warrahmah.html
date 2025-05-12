@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pembayaran Paket Warrahmah</title>
+  <link rel="stylesheet" href="pembayaran.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Pembayaran Paket <span>Mawaddah</span></h1>
+    <p>Silakan transfer <strong>Rp 45.000</strong> ke nomor GoPay berikut:</p>
+    <div class="gopay-info">
+      <p><strong>Nomor GoPay:</strong> 08XXXXXXXXXX</p>
+      <p><strong>Atas Nama:</strong> Nama Kamu</p>
+    </div>
+
+    <form action="upload_bukti_mawadah.php" method="POST" enctype="multipart/form-data">
+      <label for="bukti">Upload bukti pembayaran (screenshot):</label>
+      <input type="file" name="bukti" id="bukti" accept="image/png, image/jpeg" required>
+
+      <button type="submit">Kirim Bukti & Lanjutkan</button>
+    </form>
+  </div>
+</body>
+</html>

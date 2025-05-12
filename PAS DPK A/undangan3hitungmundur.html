@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Undangan Pernikahan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
+  <style>
+    ::-webkit-scrollbar {
+      max-width: 0;
+    }
+
+    body {
+      background-image: url('bgrn1.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      margin: 0;
+      padding: 0;
+      font-family: 'Playfair Display', serif;
+      color: #3e3e3e;
+    }
+
+    .undangan {
+      background-color: rgba(255, 255, 255, 0.85);
+      padding: 3em 2em;
+      max-width: 700px;
+      margin: 4em auto;
+      border-radius: 16px;
+      box-shadow: 0 2px 200px rgba(0, 0, 0, 0.15);
+      text-align: center;
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      color: #b48e5c;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      color: #7c623f;
+      font-weight: normal;
+      margin-bottom: 0.5em;
+    }
+
+    .mempelai {
+      font-size: 1.3em;
+      font-weight: bold;
+    }
+
+    .ortu {
+      font-size: 1em;
+      color: #555;
+      margin-bottom: 1.5em;
+      font-style: italic;
+    }
+
+    .tanggal {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #5a4e3b;
+      margin-bottom: 0.5em;
+    }
+
+    .countdown {
+      font-size: 1.1em;
+      color: #b04848;
+      font-weight: bold;
+      margin-bottom: 1.5em;
+    }
+
+    .cerita {
+      white-space: pre-wrap;
+      word-break: break-word;
+      overflow-wrap: break-word;
+      font-style: italic;
+      font-size: 1.1em;
+      color: #444;
+      white-space: pre-line;
+    }
+
+    .lokasi a {
+      font-size: 1.1em;
+      color: #3e5d7e;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="undangan">
+    <h1>Undangan Pernikahan</h1>
+
+    <div class="mempelai" id="namaPria"></div>
+    <div class="ortu" id="ortuPria"></div>
+
+    <div class="mempelai" id="namaWanita"></div>
+    <div class="ortu" id="ortuWanita"></div>
+
+    <h2>Hari Bahagia Kami</h2>
+    <div class="tanggal" id="tanggalInfo"></div>
+    <div class="countdown" id="countdown"></div>
+
+    <h2>Cerita Cinta Kami</h2>
+    <div class="cerita" id="ceritaCinta"></div>
+
+    <h2>Tempat Pelaksanaan</h2>
+    <div class="lokasi" id="lokasiMaps">
+      <a href="#" target="_blank" id="linkMaps">Lihat Lokasi di Google Maps</a>
+    </div>
+  </div>
+
+  <script>
+    function formatTanggalIndonesia(tanggal) {
+      const bulan = [
+        "Januari", "Februari", "Maret", "April", "Mei", "Juni",
+        "Juli", "Agustus", "September", "Oktober", "November", "Desember"
+      ];
+      const hari = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
+      const dateObj = new Date(tanggal);
+      const namaHari = hari[dateObj.getDay()];
+      const tanggalAngka = dateObj.getDate();
+      const namaBulan = bulan[dateObj.getMonth()];
+      const tahun = dateObj.getFullYear();
+      return `${namaHari}, ${tanggalAngka} ${namaBulan} ${tahun}`;
+    }
+
+    const data = JSON.parse(localStorage.getItem('weddingData'));
+    if (data) {
+      document.getElementById('namaPria').textContent = data.namaPria;
+      document.getElementById('ortuPria').textContent = `Putra dari ${data.ortuPria}`;
+      document.getElementById('namaWanita').textContent = data.namaWanita;
+      document.getElementById('ortuWanita').textContent = `Putri dari ${data.ortuWanita}`;
+      document.getElementById('ceritaCinta').textContent = `"${data.cerita}"`;
+
+      if (data.lokasi) {
+        const link = document.getElementById('linkMaps');
+        link.href = data.lokasi;
+        link.textContent = data.lokasi;
+      }
+
+      if (data.tanggal) {
+        const tanggalPernikahan = new Date(data.tanggal);
+        document.getElementById('tanggalInfo').textContent = formatTanggalIndonesia(data.tanggal);
+
+        function updateCountdown() {
+          const now = new Date().getTime();
+          const jarak = tanggalPernikahan.getTime() - now;
+
+          if (jarak <= 0) {
+            document.getElementById("countdown").textContent = "Hari Bahagia Telah Tiba!";
+            clearInterval(timerInterval);
+            return;
+          }
+
+          const hari = Math.floor(jarak / (1000 * 60 * 60 * 24));
+          const jam = Math.floor((jarak % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const menit = Math.floor((jarak % (1000 * 60 * 60)) / (1000 * 60));
+          const detik = Math.floor((jarak % (1000 * 60)) / 1000);
+
+          document.getElementById("countdown").textContent =
+            `${hari} hari ${jam} jam ${menit} menit ${detik} detik lagi`;
+        }
+
+        const timerInterval = setInterval(updateCountdown, 1000);
+        updateCountdown();
+      }
+
+    } else {
+      document.querySelector('.undangan').innerHTML = "<p>Data undangan tidak ditemukan.</p>";
+    }
+  </script>
+</body>
+</html>

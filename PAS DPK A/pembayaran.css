@@ -1,0 +1,68 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fffafc;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .container {
+    background: #ffffff;
+    border: 2px solid #f06292;
+    border-radius: 10px;
+    padding: 30px 40px;
+    width: 400px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    color: #e91e63;
+    margin-bottom: 10px;
+  }
+  
+  h1 span {
+    color: #000;
+  }
+  
+  .gopay-info {
+    background-color: #ffe3ec;
+    padding: 10px;
+    border-radius: 8px;
+    margin: 20px 0;
+    text-align: left;
+  }
+  
+  label {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+  
+  input[type="file"] {
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    width: 100%;
+  }
+  
+  button {
+    margin-top: 20px;
+    padding: 12px 24px;
+    border: none;
+    background-color: #f06292;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+  }
+  
+  button:hover {
+    background-color: #e91e63;
+  }
+  
