@@ -1,0 +1,13 @@
+<?php
+// Koneksi ke database
+$conn = new mysqli("localhost", "root", "", "undangan");
+
+// Ambil data jumlah tamu yang hadir
+$sql_kehadiran = "SELECT SUM(jumlah) AS total FROM kehadiran WHERE hadir = 1";
+$result = $conn->query($sql_kehadiran);
+$row = $result->fetch_assoc();
+
+echo "<p><strong>Total Tamu Hadir: " . $row['total'] . " orang</strong></p>";
+
+$conn->close();
+?>
